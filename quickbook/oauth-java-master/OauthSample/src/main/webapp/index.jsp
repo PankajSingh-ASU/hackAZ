@@ -1,7 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ipp="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>My Connect Page</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript"
 	src="https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere-1.3.2.js">
@@ -10,19 +8,59 @@
           menuProxy: '',
           grantUrl: 'http://localhost:8080/OauthSample/RequestToken'});
      </script>
-<style type="text/css">
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+    <title>customer locator</title>
 
-#map {
-	height: 100%;
-}
-</style>
-</head>
-<body>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<style>
+	.jumbotron {
+    background-color: rgba(0, 0, 0, 0.5);
+	}
+	</style>
+  </head>
+
+  <body background="google_maps.jpeg">
+
+    <div class="container" style ="padding-top:35px;">
+      <div class="header clearfix">
+        <nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Customer Locator</a>
+    </div>
+          <!--<ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+          </ul>-->
+		  <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active" style="padding-top:5px;"><a href="#"><b>Welcome xyz</b></a></li>
+          </ul>
+        </nav>
+        <h4 class="text-muted">Customer Locator</h4>
+      </div>
+
+      <div class="jumbotron" style ="color:white;font-family:Quattrocento Sans,sans-serif;">
+        <h1>Customer Locator</h1>
+        <p class="lead">Have you ever thought finding your existing customers for expanding for business would get so easier??</p>
+        <p><center><a class="btn btn-lg btn-primary" href="#" role="button" onclick = "googleMaps();">Locate Customers</a></center></p>
+      </div>
+      </div>
+    </div>
 <h1>Google Maps</h1>
 	<div id="map"></div>
 	<script type="text/javascript">
