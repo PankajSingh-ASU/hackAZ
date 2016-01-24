@@ -22,8 +22,9 @@ public class DataConnection {
 	String longKey="long";
 
 
-	public void getAllCustomers( String accessToken, String accessTokenSecret)
+	public String getAllCustomers()
 	{
+		JsonArray latLongArray=new JsonArray();
 		Config.setProperty(Config.BASE_URL_QBO, "https://sandbox-quickbooks.api.intuit.com/v3/company");
 		OAuthAuthorizer oauth = new OAuthAuthorizer(consumerKey, consumerSecret, "qyprdmmFSSYeYjq3TrS3jkqgIpUg69lLWb4yS3p6ZnBGQJwD", "TfsQX3RqepiY1XIZdgS4TdsOfeSfu5AzzsObXhbP"); 
 		Customer customer=new Customer();
@@ -33,7 +34,7 @@ public class DataConnection {
 			Context context = new Context(oauth, appToken, ServiceType.QBO, companyID);
 			DataService service = new DataService(context);
 			customers = service.findAll(new Customer());
-			JsonArray latLongArray=new JsonArray();
+			
 			for(Customer cust:customers)
 			{
 				
@@ -50,23 +51,24 @@ public class DataConnection {
 					}
 					
 						System.out.println(cust.getShipAddr().getLong());
-						custObj.addProperty("Name", cust.getGivenName()+ " "+cust.getFamilyName());
+						custObj.addProperty("name", cust.getGivenName()+ " "+cust.getFamilyName());
 					
 					latLongArray.add(custObj);
 				}
 			}
 			System.out.println(latLongArray.toString());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//return customers;
+		return latLongArray.toString();
 	}
 
 	
 
 	public static void main(String[] args) {
 		DataConnection dataConnection=new DataConnection();
-		dataConnection.getAllCustomers("", "");
+		dataConnection.getAllCustomers();
 	}
 }
