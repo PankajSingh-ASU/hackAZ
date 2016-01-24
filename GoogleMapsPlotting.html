@@ -30,29 +30,36 @@ var myLatLng = {lat: -34.397, lng: 150.644};
 
 function googleMaps()
 {
-	var jsonobj = eval(jsonstring);
-	var googlemapdata = new Array();
-	var mapOptions = {
-          center: {lat: 38.83, lng: -77.01},
-          zoom: 4
-        };	
-    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    var infowindow = new google.maps.InfoWindow();
-	var marker, i;
-    for (i = 0; i < jsonobj.length; i++) 
-	{ 
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(jsonobj[i].lat, jsonobj[i].long),
-        map: map
-      });
-	google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-        var setcontentlong = jsonobj[i].name ;
-          infowindow.setContent(setcontentlong);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-}
+	$.ajax({
+				type: 'POST',
+				url: 'quickbooks/getAllcustomer',
+				success: function(jsonstring)
+				{
+						var jsonobj = eval(jsonstring);
+						var googlemapdata = new Array();
+						var mapOptions = {
+							  center: {lat: 38.83, lng: -77.01},
+							  zoom: 4
+							};	
+						var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+						var infowindow = new google.maps.InfoWindow();
+						var marker, i;
+						for (i = 0; i < jsonobj.length; i++) 
+						{ 
+						  marker = new google.maps.Marker({
+							position: new google.maps.LatLng(jsonobj[i].lat, jsonobj[i].long),
+							map: map
+						  });
+							google.maps.event.addListener(marker, 'click', (function(marker, i) {
+							return function() {
+							var setcontentlong = jsonobj[i].name ;
+							  infowindow.setContent(setcontentlong);
+							  infowindow.open(map, marker);
+							}
+						  })(marker, i));
+						 }
+				}
+			});
 }
 
     </script>
