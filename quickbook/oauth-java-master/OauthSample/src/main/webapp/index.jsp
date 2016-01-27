@@ -83,7 +83,7 @@
 	}
 	function googleMaps()
 	{
-		alert('google maps called');
+		//alert('google maps called');
 		$.ajax({
 					type: 'POST',
 					url: 'quickbooks/getAllcustomer',
